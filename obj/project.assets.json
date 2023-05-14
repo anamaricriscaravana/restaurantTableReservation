@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ana\\Documents\\GitHub\\Project-Restaurant Table Reservation\\Project-Restaurant Table Reservation.csproj",
+      "projectUniqueName": "C:\\Users\\ana\\Documents\\GitHub\\Project-Restaurant-Table-Reservation\\Project-Restaurant Table Reservation.csproj",
       "projectName": "Project-Restaurant Table Reservation",
-      "projectPath": "C:\\Users\\ana\\Documents\\GitHub\\Project-Restaurant Table Reservation\\Project-Restaurant Table Reservation.csproj",
+      "projectPath": "C:\\Users\\ana\\Documents\\GitHub\\Project-Restaurant-Table-Reservation\\Project-Restaurant Table Reservation.csproj",
       "packagesPath": "C:\\Users\\ana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ana\\Documents\\GitHub\\Project-Restaurant Table Reservation\\obj\\",
+      "outputPath": "C:\\Users\\ana\\Documents\\GitHub\\Project-Restaurant-Table-Reservation\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ana\\AppData\\Roaming\\NuGet\\NuGet.Config"
