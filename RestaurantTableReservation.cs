@@ -4,13 +4,7 @@
     {
         System.Console.WriteLine("\t HELLO! WELCOME TO THE BIT BITE RESTAURANT TABLE RESERVATION SYSTEM!");
 
-        List<bool> tables = new List<bool>();
-        int numberOfTables = 20;
-
-        for (int i = 0; i < numberOfTables; i++)
-        {
-            tables.Add(false);
-        }
+        Tables tables = new Tables(20);
 
         int tableNumber = 0;
 
@@ -31,7 +25,7 @@
                     switch (choicetableReservation)
                     {
                         case "Y":
-                            availableTables(numberOfTables, tables);
+                            availableTables(tables.tableStatus);
 
                             bool tableNumberChoice = true;
                             while (tableNumberChoice)
@@ -40,14 +34,14 @@
                                 System.Console.Write("Please enter the table number:  ");
                                 tableNumber = Convert.ToInt16(System.Console.ReadLine());
 
-                                if (tableNumber >= 1 && tableNumber <= numberOfTables && !tables[tableNumber - 1])
+                                if (tables.tableValid(tableNumber))
                                 {
                                     tableNumberChoice = false;
                                 }
                                 else
                                 {
-                                    System.Console.WriteLine(" ");
-                                    System.Console.WriteLine("\t Table is not available. Please try again!");
+                                    Console.WriteLine(" ");
+                                    Console.WriteLine("\t Table is not available. Please try again!");
                                     continue;
                                 }
                             }
@@ -95,7 +89,8 @@
                             string confirm = System.Console.ReadLine().ToUpper();
                             if (confirm == "Y")
                             {
-                                tables[tableNumber - 1] = true;
+                                Reservation reservation = new Reservation(tableNumber, numberPeople, mealTimeChoice, dateReservation);
+                                tables.updateTableStatus(tableNumber, true);
                                 System.Console.WriteLine(" ");
                                 System.Console.WriteLine("\t You have successfully booked the table " + tableNumber + " for " + numberPeople + " people on " + dateReservation + ", in the " + mealTimeChoice);
                             }
@@ -112,7 +107,7 @@
                     break;
 
                 case "2":
-                    availableTables(numberOfTables, tables);
+                    availableTables(tables.tableStatus);
                     break;
 
                 case "0":
@@ -141,13 +136,13 @@
         System.Console.WriteLine("0. Exit");
     }
 
-    private static void availableTables(int numberOfTables, List<bool> tables)
+    private static void availableTables(bool[] tableStatus)
     {
         Console.WriteLine("Available Tables:");
         Console.WriteLine("\tTable number   \t    Status");
-        for (int i = 0; i < numberOfTables; i++)
+        for (int i = 0; i < tableStatus.Length; i++)
         {
-            Console.WriteLine("\t     {0}   \t   {1}", i + 1, tables[i] ? "Reserved" : "Available");
+            Console.WriteLine("\t     {0}   \t   {1}", i + 1, tableStatus[i] ? "Reserved" : "Available");
         }
     }
     private static void mealTimeReservation()

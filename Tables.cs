@@ -1,15 +1,24 @@
 class Tables
 {
-    public int numberOfTables = 20;
-    public string? availableTables;
+    public bool[] tableStatus;
+    public List<Reservation> reservations;
 
-    public static void AvailableTables(int numberOfTables, List<bool> tables)
+    public Tables(int numberOfTables)
     {
-        Console.WriteLine("Available Tables:");
-        Console.WriteLine("\tTable number   \t    Status");
-        for (int i = 0; i < numberOfTables; i++)
+        tableStatus = new bool[numberOfTables];
+        reservations = new List<Reservation>();
+    }
+
+    public bool tableValid(int tableNumber)
+    {
+        return tableNumber >= 1 && tableNumber <= tableStatus.Length && !tableStatus[tableNumber - 1];
+    }
+
+    public void updateTableStatus(int tableNumber, bool isReserved)
+    {
+        if (tableNumber >= 1 && tableNumber <= tableStatus.Length)
         {
-            Console.WriteLine("\t     {0}   \t   {1}", i + 1, tables[i] ? "Reserved" : "Available");
+            tableStatus[tableNumber - 1] = isReserved;
         }
     }
 }
