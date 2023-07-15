@@ -42,12 +42,13 @@
                                 {
                                     Console.WriteLine(" ");
                                     Console.WriteLine("\t Table is not available. Please try again!");
+                                    System.Console.WriteLine(" ");
                                     continue;
                                 }
                             }
 
                             System.Console.WriteLine(" ");
-                            System.Console.Write("Table for how many poeple?:  ");
+                            System.Console.Write("Table for how many people?:  ");
                             int numberPeople = Convert.ToInt16(System.Console.ReadLine());
 
                             System.Console.WriteLine(" ");
@@ -56,10 +57,11 @@
 
                             mealTimeReservation();
 
-                            System.Console.Write("Please enter the number of your selected meal time:  ");
-                            string? mealTimeChoice = System.Console.ReadLine();
+                            string? mealTimeChoice = " ";
                             while (mealTimeChoice != "1" && mealTimeChoice != "2" && mealTimeChoice != "3")
                             {
+                                System.Console.Write("Please enter the number of your selected meal time:  ");
+                                mealTimeChoice = System.Console.ReadLine();
                                 switch (mealTimeChoice)
                                 {
                                     case "1":
@@ -77,19 +79,18 @@
                                     default:
                                         System.Console.WriteLine(" ");
                                         System.Console.WriteLine("\t Invalid Number!");
-                                        System.Console.Write("Please enter the number of meal time (1-3): ");
-                                        mealTimeChoice = System.Console.ReadLine();
+                                        System.Console.WriteLine(" ");
                                         continue;
                                 }
+                            break;
                             }
-
 
                             System.Console.WriteLine(" ");
                             System.Console.Write("Do you want to confirm the booking? (Y/N): ");
                             string confirm = System.Console.ReadLine().ToUpper();
                             if (confirm == "Y")
                             {
-                                Reservation reservation = new Reservation(tableNumber, numberPeople, mealTimeChoice, dateReservation);
+                                Reservation reservation = new Reservation(tableNumber, numberPeople, dateReservation, mealTimeChoice);
                                 tables.updateTableStatus(tableNumber, true);
                                 System.Console.WriteLine(" ");
                                 System.Console.WriteLine("\t You have successfully booked the table " + tableNumber + " for " + numberPeople + " people on " + dateReservation + ", in the " + mealTimeChoice);
@@ -114,12 +115,14 @@
                     System.Console.WriteLine(" ");
                     System.Console.WriteLine("\t Exit");
                     System.Console.WriteLine("\t Thank you for using Bit Bite Table Reservation System!");
+                    System.Console.WriteLine(" ");
                     RestaurantTableReservation = false;
                     break;
 
                 default:
                     System.Console.WriteLine(" ");
                     System.Console.WriteLine("\t Invalid option. Please try again.");
+                    System.Console.WriteLine(" ");
                     break;
 
             }
