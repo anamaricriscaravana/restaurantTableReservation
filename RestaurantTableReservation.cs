@@ -7,6 +7,7 @@
         Tables tables = new Tables(20);
 
         int tableNumber = 0;
+        int numberPeople = 0;
 
         bool RestaurantTableReservation = true;
         while (RestaurantTableReservation)
@@ -40,16 +41,33 @@
                                 }
                                 else
                                 {
-                                    Console.WriteLine(" ");
-                                    Console.WriteLine("\t Table is not available. Please try again!");
+                                    System.Console.WriteLine(" ");
+                                    System.Console.WriteLine("\t Table is not available. Please try again!");
                                     System.Console.WriteLine(" ");
                                     continue;
                                 }
                             }
 
-                            System.Console.WriteLine(" ");
-                            System.Console.Write("Table for how many people?:  ");
-                            int numberPeople = Convert.ToInt16(System.Console.ReadLine());
+                            bool numbPeople = false;
+                            while (!numbPeople)
+                            {
+                                System.Console.WriteLine(" ");
+                                System.Console.Write("Table for how many people? (1-10):  ");
+                                numberPeople = Convert.ToInt16(System.Console.ReadLine());
+
+                                if (!tables.numberPeopleLimit(numberPeople))
+                                {
+                                    numbPeople = true;
+                                }
+                                else
+                                {
+                                    System.Console.WriteLine(" ");
+                                    System.Console.WriteLine("\t Sorry, a table cannot be reserved for more than 10 people. Please try again.");
+                                    System.Console.WriteLine(" ");
+                                    continue;
+                                }
+
+                            }
 
                             System.Console.WriteLine(" ");
                             System.Console.Write("Please enter the desired date for this reservation (MM/DD/YYYY):  ");
@@ -82,7 +100,7 @@
                                         System.Console.WriteLine(" ");
                                         continue;
                                 }
-                            break;
+                                break;
                             }
 
                             System.Console.WriteLine(" ");
